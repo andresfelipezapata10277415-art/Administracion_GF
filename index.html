@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Grúas Fernández | Administrativo</title>
+  <meta name="description" content="Panel administrativo de Grúas Fernández">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="admin-body locked">
+  
+  <div class="name-login-overlay" id="nameLoginOverlay" aria-hidden="false">
+    <div class="name-login-card">
+      <img src="assets/logo.png" alt="Logo Grúas Fernández" class="name-login-logo">
+      <p class="eyebrow">ACCESO ADMINISTRATIVO</p>
+      <h2>Identifícate para<br><em>continuar</em></h2>
+      <p class="name-login-copy">Ingresa tu nombre de administrador para acceder al panel.</p>
+
+      <form id="nameLoginForm" class="name-login-form">
+        <label>Nombre del administrador
+          <input id="adminNameInput" autocomplete="off" placeholder="Escribe aquí tu nombre" required>
+        </label>
+        <button class="btn primary full" type="submit">Ingresar</button>
+        <p class="name-login-error" id="nameLoginError" role="alert"></p>
+      </form>
+    </div>
+  </div>
+
+<header class="admin-header">
+    <a class="admin-brand" href="#inicio" aria-label="Grúas Fernández">
+      <img src="assets/logo.png" alt="Logo Grúas Fernández">
+      <span><b>GRÚAS FERNÁNDEZ</b><small>ADMINISTRATIVO</small></span>
+    </a>
+    <button class="btn ghost admin-logout" id="logoutBtn" type="button">Cerrar sesión</button>
+  </header>
+
+  <main>
+    <section class="admin-hero" id="inicio">
+      <div class="wrap admin-hero-grid">
+        <div>
+          <div class="hero-kicker-row"><p class="eyebrow">PANEL ADMINISTRATIVO</p><span class="internal-badge">USO INTERNO</span></div>
+          <h1>Bienvenido,<br><em id="adminUserName">Administrador</em></h1>
+          <p class="lead">Registra y organiza los servicios de Grúas Fernández desde un solo lugar.</p>
+        </div>
+        <div class="admin-hero-mark">
+          <img src="assets/logo.png" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="register admin-register" id="registro">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">REGISTRO DE SERVICIO</p>
+            <h2>Nuevo <em>servicio</em></h2>
+          </div>
+          <p>Completa la información del cliente, del servicio y los datos administrativos.</p>
+        </div>
+
+        <form id="serviceForm" class="form admin-form">
+          <div class="panel-internal-banner">
+            <span class="internal-badge">USO INTERNO</span>
+            <p>Panel exclusivo para personal administrativo de Grúas Fernández.</p>
+          </div>
+
+          <div class="form-section">
+            <p class="form-section-kicker">DATOS DEL CLIENTE</p>
+            <div class="form-grid">
+              <label>Nombre completo *
+                <input name="name" required placeholder="Nombre del cliente">
+              </label>
+              <label>Teléfono *
+                <input name="phone" required inputmode="tel" placeholder="Ej. 321 000 0000">
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <p class="form-section-kicker">SERVICIO</p>
+            <label>Servicio *
+              <select name="service" id="serviceSelect" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option>Servicio de grúa</option>
+                <option>Carga y transporte</option>
+                <option>Asesoría</option>
+              </select>
+            </label>
+
+            <div id="locationFields" class="location-fields">
+              <p class="form-group-title">Ubicación del servicio</p>
+              <div class="form-grid">
+                <label>Ciudad/Municipio *
+                  <input name="city" required placeholder="Ej. Bogotá">
+                </label>
+                <label>Dirección *
+                  <input name="address" required placeholder="Ej. Calle 10 # 20-30">
+                </label>
+                <label>Barrio/Sector *
+                  <input name="neighborhood" required placeholder="Ej. Zona Industrial">
+                </label>
+                <label>Puntos de referencia <em>(Opcional)</em>
+                  <input name="reference" placeholder="Ej. Frente a la estación de servicio">
+                </label>
+              </div>
+            </div>
+
+            <div id="vehicleFields" class="conditional-fields" hidden>
+              <p class="conditional-title">Datos del vehículo</p>
+              <div class="form-grid">
+                <label>Tipo de vehículo *
+                  <input name="vehicleType" id="vehicleType" placeholder="Ej. automóvil, camioneta, camión">
+                </label>
+                <label>Placas del vehículo *
+                  <input name="vehiclePlate" id="vehiclePlate" placeholder="Ej. ABC123">
+                </label>
+                <label>Marca y modelo *
+                  <input name="vehicleBrandModel" id="vehicleBrandModel" placeholder="Ej. Toyota Hilux 2022">
+                </label>
+              </div>
+            </div>
+
+            <div id="cargoFields" class="conditional-fields" hidden>
+              <p class="conditional-title">Especifícanos tu carga</p>
+              <div class="form-grid">
+                <label>Tipo de carga *
+                  <input name="cargoType" id="cargoType" placeholder="Ej. maquinaria, contenedor, estructura, tanque">
+                </label>
+                <label>Medidas <em>(Opcional)</em>
+                  <input name="cargoDimensions" id="cargoDimensions" placeholder="Ej. 6 m x 2.5 m x 2.8 m">
+                </label>
+                <label>Peso *
+                  <input name="cargoWeight" id="cargoWeight" placeholder="Ej. 8 toneladas">
+                </label>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label id="generalWeightField">Peso aproximado *
+                <input name="weight" id="generalWeight" required placeholder="Ej. 2 toneladas">
+              </label>
+              <label id="dateField">Fecha requerida *
+                <input name="date" id="serviceDate" type="date" required>
+              </label>
+            </div>
+
+            <label id="detailsField">Detalles adicionales <em>(Opcional)</em>
+              <textarea name="details" id="details" rows="4" placeholder="Información adicional"></textarea>
+            </label>
+
+            <div class="admin-fields-inline">
+              <div class="admin-fields-divider">
+                <span class="internal-badge">USO INTERNO</span>
+              </div>
+
+              <div id="priceField">
+                <label>Precio del servicio *
+                  <div class="money-input">
+                    <span>$</span>
+                    <input name="servicePrice" id="servicePrice" required inputmode="numeric" placeholder="Ej. 350000">
+                  </div>
+                </label>
+              </div>
+
+            </div>
+
+            <div id="advisoryFields" class="conditional-fields advisory-fields" hidden>
+              <p class="conditional-title">Resuelve tus dudas</p>
+              <label>Cuéntanos tu situación *
+                <textarea name="advisorySituation" id="advisorySituation" rows="6" placeholder="Describe la necesidad o consulta."></textarea>
+              </label>
+            </div>
+          </div>
+
+          <input type="hidden" name="registeredBy" id="registeredBy" value="Administrador">
+          <button class="btn primary full" type="submit">Registrar servicio <b>↗</b></button>
+          <p class="admin-form-note" id="adminFormNote">El registro quedará identificado con el usuario administrativo que inició sesión.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="admin-footer">
+    <div class="wrap">© <span id="year"></span> Grúas Fernández · Panel administrativo</div>
+  </footer>
+
+  <div class="success-overlay" id="successOverlay" aria-hidden="true">
+    <div class="success-card" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+      <div class="success-icon">✓</div>
+      <p class="eyebrow">REGISTRO COMPLETADO</p>
+      <h2 id="successTitle">Servicio registrado correctamente</h2>
+      <p class="success-copy">La información fue enviada y registrada.</p>
+      <button class="btn primary full" id="successCloseBtn" type="button">Continuar</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
