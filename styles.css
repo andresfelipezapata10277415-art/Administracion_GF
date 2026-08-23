@@ -379,3 +379,9 @@ body.modal-open{overflow:hidden}
 body.modal-open{
   overflow:hidden!important;
 }
+
+
+/* Ubicación: origen y destino */
+.location-subsection{margin-top:18px}
+.location-subsection + .location-subsection{margin-top:24px}
+.location-subsection label{display:block}

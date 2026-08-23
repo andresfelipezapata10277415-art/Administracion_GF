@@ -89,18 +89,27 @@
 
             <div id="locationFields" class="location-fields">
               <p class="form-group-title">Ubicación del servicio</p>
-              <div class="form-grid">
-                <label>Ciudad/Municipio *
-                  <input name="city" required placeholder="Ej. Bogotá">
+
+              <div class="location-subsection">
+                <p class="conditional-title">Origen</p>
+                <label>Lugar de origen *
+                  <input name="origin" id="origin" required placeholder="Escribe el lugar de origen">
                 </label>
-                <label>Dirección *
-                  <input name="address" required placeholder="Ej. Calle 10 # 20-30">
+              </div>
+
+              <div class="location-subsection">
+                <p class="conditional-title">Destino</p>
+                <label>Lugar de destino *
+                  <input name="destination" id="destination" required placeholder="Escribe el lugar de destino">
                 </label>
-                <label>Barrio/Sector *
-                  <input name="neighborhood" required placeholder="Ej. Zona Industrial">
-                </label>
-                <label>Puntos de referencia <em>(Opcional)</em>
-                  <input name="reference" placeholder="Ej. Frente a la estación de servicio">
+              </div>
+
+              <div class="location-subsection">
+                <label>Hora aproximada de recogida *
+                  <input type="text" name="pickupTime" id="pickupTime" required
+                  inputmode="numeric" maxlength="5" placeholder="HH:MM"
+                  pattern="(?:[01][0-9]|2[0-3]):[0-5][0-9]"
+                  title="Ingresa la hora en formato de 24 horas, por ejemplo 18:30">
                 </label>
               </div>
             </div>

@@ -1,4 +1,4 @@
-const GOOGLE_SHEETS_URL="https://script.google.com/macros/s/AKfycbw4h4lhc5W3c9NEJ1R_kljfha88WjQ1Iwhat1XAjyv-ab8gG9v1RO-DMH1JAgqab2sT/exec";
+const GOOGLE_SHEETS_URL="https://script.google.com/macros/s/AKfycbyNSbKhGXZm0N6fCUwIaliug2Nf1zJIZLqYief3A4yGu-F6RhSSmizXj02CZepIsbWf/exec";
 
 const serviceSelect=document.getElementById("serviceSelect");
 const vehicleFields=document.getElementById("vehicleFields");
@@ -180,10 +180,9 @@ function buildAdminSheetsPayload(formData){
   };
 
   if(service==="Servicio de grúa"){
-    payload.city=formData.get("city") || "";
-    payload.address=formData.get("address") || "";
-    payload.neighborhood=formData.get("neighborhood") || "";
-    payload.reference=formData.get("reference") || "";
+    payload.origin=formData.get("origin") || "";
+    payload.destination=formData.get("destination") || "";
+    payload.pickupTime=formData.get("pickupTime") || "";
     payload.vehicleType=formData.get("vehicleType") || "";
     payload.vehiclePlate=formData.get("vehiclePlate") || "";
     payload.vehicleBrandModel=formData.get("vehicleBrandModel") || "";
@@ -193,10 +192,9 @@ function buildAdminSheetsPayload(formData){
   }
 
   if(service==="Carga y transporte"){
-    payload.city=formData.get("city") || "";
-    payload.address=formData.get("address") || "";
-    payload.neighborhood=formData.get("neighborhood") || "";
-    payload.reference=formData.get("reference") || "";
+    payload.origin=formData.get("origin") || "";
+    payload.destination=formData.get("destination") || "";
+    payload.pickupTime=formData.get("pickupTime") || "";
     payload.cargoType=formData.get("cargoType") || "";
     payload.cargoDimensions=formData.get("cargoDimensions") || "";
     payload.cargoWeight=formData.get("cargoWeight") || "";
@@ -292,4 +290,28 @@ document.addEventListener("keydown",event=>{
   if(event.key==="Escape" && successOverlay?.classList.contains("open")){
     closeSuccessOverlay();
   }
+});
+
+
+const pickupTimeInput=document.getElementById("pickupTime");
+
+pickupTimeInput?.addEventListener("input",()=>{
+  let value=pickupTimeInput.value.replace(/\D/g,"").slice(0,4);
+  if(value.length>=3){
+    value=value.slice(0,2)+":"+value.slice(2);
+  }
+  pickupTimeInput.value=value;
+});
+
+pickupTimeInput?.addEventListener("blur",()=>{
+  const value=pickupTimeInput.value.trim();
+  if(!value) return;
+  const valid=/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(value);
+  pickupTimeInput.setCustomValidity(
+    valid ? "" : "Ingresa una hora válida en formato de 24 horas (HH:MM)."
+  );
+});
+
+pickupTimeInput?.addEventListener("input",()=>{
+  pickupTimeInput.setCustomValidity("");
 });
