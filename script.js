@@ -1,4 +1,4 @@
-const GOOGLE_SHEETS_URL="https://script.google.com/macros/s/AKfycbyc044DQWqTzUSbAjSKqZbNG_gfGuJ92IXFJHNX_8k6vGwqTiwlJeHuQbjO7vsJME9P/exec";
+const GOOGLE_SHEETS_URL="https://script.google.com/macros/s/AKfycby7FRuGG6VudjsIChApNN1PjB9q4FKs6vaYHSQo1pHLRVS0HM6clwQ5m36oexyjZsuh/exec";
 
 const serviceSelect=document.getElementById("serviceSelect");
 const vehicleFields=document.getElementById("vehicleFields");
